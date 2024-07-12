@@ -17,3 +17,9 @@
 
   --element-inline-size: clamp(376px, 700px, 55%); 
 }
+
+@media (width <=375px) {
+  :root {
+    --element-inline-size: 100%;
+  }
+}

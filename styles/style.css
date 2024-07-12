@@ -22,7 +22,7 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--font-family);
-  font-variation-settings: 'wdth'var(--font-regular);
+  font-variation-settings: 'wdth' var(--font-regular);
   background-color: var(--background);
   background-image: var(--background-image);
   background-size: cover;
@@ -35,9 +35,8 @@
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  block-size: 368px;
   margin-block: 100px 100px;
   border: 2px solid var(--color);
   background-color: var(--background);
@@ -51,10 +50,10 @@
 }
 
 .header__title {
-  margin-block-start: 104px;
-  text-decoration: none;
+  margin-block-start: 137px;
   margin-block-end: clamp(10px, 20px, 30px);
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-decoration: none;
 }
 
 .header__text {
@@ -66,6 +65,7 @@
   display: flex;
   flex-direction: column;
   padding-inline-start: 27px;
+  padding-block-end: 25px;
   gap: clamp(10px, 13px, 15px);
 }
 
@@ -130,17 +130,6 @@
   animation: inf 0.5s ease-in-out infinite alternate;
 }
 
-@keyframes inf {
-  0% {
-    inset: 1px 0 0 -112px;
-  }
-
-  100% {
-    inset: 1px 0 0 -108px;
-  }
-}
-
-
 /* Main */
 
 .main {
@@ -162,6 +151,7 @@
 .card__title {
   padding-inline: 10px;
   padding-block: 5px;
+  border-bottom: 2px solid var(--color);
   font-variation-settings: 'wdth'var(--font-bold);
   font-size: clamp(15px, 18px, 23px);
   color: var(--color);
@@ -198,9 +188,9 @@
 }
 
 .card__image {
-  margin-block-end: clamp(24px, 27px, 30px);
+  display: block;
   width: 100%;
-  border: 2px solid var(--color);
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -209,26 +199,29 @@
   padding-inline: clamp(23px, 25px, 28px);
   padding-block-end: clamp(23px, 25px, 28px);
   font-variation-settings: 'wdth'var(--font-regular);
-  font-size: clamp(15px, 18px, 23px);
+  font-size: clamp(15px, 18px, 20px);
   line-height: 117%;
   color: var(--color);
 }
 
 .card__text:first-of-type {
-  padding-block-end: clamp(24px, 27px, 31px);
+  border-top: 2px solid var(--color);
+  padding-block: clamp(24px, 26px, 30px) clamp(24px, 27px, 31px);
 }
 
 .card__button-box {
   display: flex;
   align-self: end;
-  gap: 5px;
   padding-inline-end: 25px;
-  padding-block-end: 23px;
+  padding-block-end: 24px;
 }
 
 .card__icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   block-size: 36px;
-  padding: 0;
+  padding: 5px 7px 0 0;
   background: transparent;
   border: 2px solid transparent;
   transition: border 0.3s ease;
@@ -304,35 +297,15 @@
   transform-origin: center;
 }
 
-@keyframes like-icon-scale {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.5);
-  }
-}
-
 .like-icon.is-liked .sparks {
   animation: like-icon-sparks 0.3s 0.3s ease-in alternate;
   transform-origin: center;
 }
 
-@keyframes like-icon-sparks {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 .card__like-button {
   position: relative;
+  inline-size: 130px;
   block-size: 36px;
-  padding-inline: 35px;
   background: transparent;
   border: 2px solid var(--color);
   transition: box-shadow 0.3s ease;
@@ -394,7 +367,7 @@
 }
 
 .filter-hue-contrast {
-  filter:  hue-rotate(-90deg) contrast(200%);
+  filter: hue-rotate(-90deg) contrast(200%);
 }
 
 .filter-sefia {
@@ -454,17 +427,19 @@
   mix-blend-mode: difference;
 }
 
-#footer__dialog[open] {
+.footer__dialog[open] {
   position: fixed;
   display: grid;
   grid-template-rows: min-content min-content;
   width: 353px;
   gap: 30px 20px;
   padding: 31.5px 32.5px 30.5px 31.5px;
+  color: var(--color);
+  background-color: var(--background);
 }
 
-#footer__dialog::backdrop {
-  background-color: var(--color);
+.footer__dialog::backdrop {
+  background-color: var(--background);
   opacity: 0.75;
 }
 
@@ -473,6 +448,7 @@
   align-self: center;
   width: 39px;
   height: 39px;
+  color: var(--color);
 }
 
 .footer__dialog-text {
@@ -493,28 +469,17 @@
 /* Media */
 
 @media (width <=375px) {
-  :root {
-    --element-inline-size: 100%;
-  }
 
   .main {
     gap: 50px;
   }
 
-  .header {
-   block-size: 327px;
-  } 
-
   .header__title {
-    margin-block-start: 92px;
-   } 
-
-  .card__image {
-    margin-block-end: 26px;
+    margin-block-start: 122px; 
   }
 
   .card__image-label {
-right: 12px;
+    right: 12px;
   }
 
   .card__button-box {
@@ -540,7 +505,7 @@ right: 12px;
     margin-block-end: 8px;
   }
 
-  #footer__dialog[open] {
+  .footer__dialog[open] {
     max-width: 341px;
     padding: 32px 39px;
   }

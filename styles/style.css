@@ -462,6 +462,7 @@
   font-weight: var(--font-regular);
   font-size: 14px;
   line-height: 150%;
+  text-transform: uppercase;
 }
 
 .footer__dialog-button {
